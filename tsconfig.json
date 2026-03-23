@@ -5,6 +5,8 @@
 		"allowJs": true,
 		"paths": {
 			"@/*": ["./src/*"],
+			"@prisma/generated": ["./prisma/generated"],
+			"@prisma/generated/*": ["./prisma/generated/*"]
 		},
 		"resolvePackageJsonExports": true,
 		"esModuleInterop": true,
