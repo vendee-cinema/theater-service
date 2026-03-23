@@ -14,21 +14,40 @@ export class TheaterPrismaRepository implements TheaterRepositoryPort {
 			orderBy: { name: 'asc' }
 		})
 		return theaters.map(
-			t => new TheaterEntity(t.id, t.name, t.address, t.createdAt, t.updatedAt)
+			theater =>
+				new TheaterEntity(
+					theater.id,
+					theater.name,
+					theater.address,
+					theater.createdAt,
+					theater.updatedAt
+				)
 		)
 	}
 
 	public async findById(id: string): Promise<TheaterEntity | null> {
-		const t = await this.prisma.theater.findUnique({ where: { id } })
-		return t
-			? new TheaterEntity(t.id, t.name, t.address, t.createdAt, t.updatedAt)
+		const theater = await this.prisma.theater.findUnique({ where: { id } })
+		return theater
+			? new TheaterEntity(
+					theater.id,
+					theater.name,
+					theater.address,
+					theater.createdAt,
+					theater.updatedAt
+				)
 			: null
 	}
 
 	public async create(
 		data: Pick<TheaterEntity, 'name' | 'address'>
 	): Promise<TheaterEntity> {
-		const t = await this.prisma.theater.create({ data })
-		return new TheaterEntity(t.id, t.name, t.address, t.createdAt, t.updatedAt)
+		const theater = await this.prisma.theater.create({ data })
+		return new TheaterEntity(
+			theater.id,
+			theater.name,
+			theater.address,
+			theater.createdAt,
+			theater.updatedAt
+		)
 	}
 }

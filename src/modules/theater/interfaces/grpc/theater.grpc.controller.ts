@@ -11,13 +11,13 @@ import type {
 import { CreateTheaterUsecase } from '../../application/commands'
 import {
 	GetTheaterUsecase,
-	ListTheaterUsecase
+	ListTheatersUsecase
 } from '../../application/queries'
 
 @Controller()
 export class TheaterGrpcController {
 	public constructor(
-		private readonly listUC: ListTheaterUsecase,
+		private readonly listUC: ListTheatersUsecase,
 		private readonly getUC: GetTheaterUsecase,
 		private readonly createUC: CreateTheaterUsecase
 	) {}
