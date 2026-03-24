@@ -16,7 +16,7 @@ export class SeatGrpcController {
 		private readonly getUC: GetSeatUsecase
 	) {}
 
-	@GrpcMethod('SeatService', 'ListSeats')
+	@GrpcMethod('SeatService', 'ListSeatsByHall')
 	public async list(data: ListSeatsRequest): Promise<ListSeatsResponse> {
 		const seats = await this.listUC.execute(data.hallId, data.sessionId)
 		return { seats }

@@ -12,7 +12,7 @@ export class SeatPrismaRepository implements SeatRepositoryPort {
 	public async findByHall(hallId: string): Promise<SeatEntity[]> {
 		const seats = await this.prisma.seat.findMany({
 			where: { hallId },
-			orderBy: [{ row: 'asc', number: 'asc' }]
+			orderBy: [{ row: 'asc' }, { number: 'asc' }]
 		})
 		return seats.map(
 			seat =>

@@ -20,7 +20,7 @@ export class HallGrpcController {
 		private readonly createUC: CreateHallUsecase
 	) {}
 
-	@GrpcMethod('HallService', 'ListHalls')
+	@GrpcMethod('HallService', 'ListHallsByTheater')
 	public async list(data: ListHallsRequest): Promise<ListHallsResponse> {
 		const halls = await this.listUC.execute(data.theaterId)
 		return { halls }

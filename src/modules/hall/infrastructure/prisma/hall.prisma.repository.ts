@@ -45,7 +45,8 @@ export class HallPrismaRepository implements HallRepositoryPort {
 		theaterId: string
 		rows: RowEntity[]
 	}): Promise<HallEntity> {
-		const hall = await this.prisma.hall.create({ data })
+		const { name, theaterId } = data
+		const hall = await this.prisma.hall.create({ data: { name, theaterId } })
 		return new HallEntity(
 			hall.id,
 			hall.name,
@@ -59,7 +60,15 @@ export class HallPrismaRepository implements HallRepositoryPort {
 		const seats: SeatCreateManyInput[] = []
 		for (const row of rows) {
 			for (let num = 1; num <= row.columns; num++) {
-				seats.push({ ...row, number: num, hallId, x: num, y: row.row })
+				seats.push({
+					row: row.row,
+					price: row.price,
+					type: row.type,
+					number: num,
+					hallId,
+					x: num,
+					y: row.row
+				})
 			}
 		}
 		await this.prisma.seat.createMany({ data: seats })
