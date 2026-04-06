@@ -31,8 +31,8 @@
 		"@nestjs/platform-express": "^11.0.1",
 		"@prisma/adapter-pg": "^7.5.0",
 		"@prisma/client": "^7.5.0",
-		"@vendee-cinema/common": "^1.2.6",
-		"@vendee-cinema/contracts": "^1.2.18",
+		"@vendee-cinema/common": "^1.2.17",
+		"@vendee-cinema/contracts": "^1.2.33",
 		"prisma": "^7.5.0",
 		"reflect-metadata": "^0.2.2",
 		"rxjs": "^7.8.1"
