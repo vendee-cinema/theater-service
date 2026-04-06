@@ -10,11 +10,14 @@ export class GetSeatUsecase {
 
 	public async execute(id: string) {
 		const seat = await this.repository.findById(id)
+
 		if (!seat)
 			throw new RpcException({
 				code: RpcStatus.NOT_FOUND,
 				details: 'Seat not found'
 			})
-		return seat
+
+		// TODO: idk if it will be needed but msut to think about getting status
+		return { ...seat, status: undefined }
 	}
 }
